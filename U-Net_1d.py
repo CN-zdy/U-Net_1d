@@ -68,8 +68,8 @@ class U_Net_1d(nn.Module):
         )
 
         # final prediction
-        self.dense1 = nn.Linear(self.n, self.filter_list[0])
-        self.dense2 = nn.Linear(self.filter_list[0], n_classes)
+        #self.dense1 = nn.Linear(self.n, self.filter_list[0])
+        #self.dense2 = nn.Linear(self.filter_list[0], n_classes)
 
     def forward(self, x):
 
@@ -99,8 +99,8 @@ class U_Net_1d(nn.Module):
         d1 = self.Conv1d(d2)
 
         #d = d1.view(-1, 64 * 3 * 3)
-        d = self.dense1(d1)
-        d = d.mean(-2)
-        d = self.dense2(d)
+        #d = self.dense1(d1)
+        #d = d.mean(-2)
+        #d = self.dense2(d)
 
-        return d
+        return d1
