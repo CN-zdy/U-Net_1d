@@ -36,14 +36,12 @@ class Conv1d(nn.Module):
         return out
 
 class U_Net_1d(nn.Module):
-    def __init__(self, in_channels, out_channels, filter_list, n_classes, n):
+    def __init__(self, in_channels, out_channels, filter_list):
         super(U_Net_1d, self).__init__()
 
         self.in_channels = in_channels
         self.out_channels = out_channels
         self.filter_list = filter_list
-        self.n_classes = n_classes
-        self.n = n
 
         self.maxpooling = nn.MaxPool1d(2)
 
@@ -97,10 +95,5 @@ class U_Net_1d(nn.Module):
         d2 = self.de_conv_1(d2)
 
         d1 = self.Conv1d(d2)
-
-        #d = d1.view(-1, 64 * 3 * 3)
-        #d = self.dense1(d1)
-        #d = d.mean(-2)
-        #d = self.dense2(d)
 
         return d1
